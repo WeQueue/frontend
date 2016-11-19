@@ -27,7 +27,9 @@ function submit(service) {
 
       $("#dynamicServiceList").hide();
       $("#waitTimeContainer").show();
-  }).fail(function(result) {
+
+      setInterval(updateDisplayQueue($('#phoneNumberId').val(), companyName, service), 1000);
+    }).fail(function(result) {
     console.log(result);
   });  
 }
@@ -45,7 +47,6 @@ function displayServices(companyName) {
 }
 
 function displayQueuePosList(queuePos, queueLength) {
-  console.log('called');
   $('#queuePosList').empty();
 
   if (queuePos >= 3) { $('#queuePosList').append('<h5>' + parseInt(queuePos-2) + '</h5>'); }
@@ -55,11 +56,17 @@ function displayQueuePosList(queuePos, queueLength) {
   if (queueLength - queuePos >= 2) { $('#queuePosList').append('<h5>' + parseInt(queuePos+2) + '</h5>'); }  
 }
 
+function updateDisplayQueue(phone, company, service) {
+  $.post("https://wequeue-timqian1.c9users.io/getPosition", {"phone":phone,"company":company,"service":service}, function(result) {
+      displayQueuePosList(result.queuePosition, result.queueLength);
+  })
+}
+
 
 
 
 //logic starts
 
 companyName = getParameterByName('company');
-$("#waitTimeContainer").hide();
-displayServices(companyName);
+// $("#waitTimeContainer").hide();
+// displayServices(companyName);
