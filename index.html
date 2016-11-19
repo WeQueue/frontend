@@ -67,9 +67,11 @@
         return decodeURIComponent(results[2].replace(/\+/g, " "));
       }
 
+      companyName = getParameterByName('company');
+
       function submit(service) {
         result = $.post("http://172.20.10.3:3000/user",
-          {"phone":$('#phoneNumberId').val(),"company":"icbc","service":"personal"},
+          {"phone":$('#phoneNumberId').val(),"company":companyName,"service":"personal"},
           function(result){
             console.log("New success message");
 
