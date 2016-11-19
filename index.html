@@ -72,6 +72,8 @@
 
             $("#optionsList").hide();
             $("#waitTime").show();
+        }).fail(function(result) {
+          console.log(result);
         });
         
       }
