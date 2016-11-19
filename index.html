@@ -27,49 +27,41 @@
   </head>
 
   <body>
-     <div class="jumbotron" style="padding-bottom:60px;background-color:#f2bb15;border-bottom:2px #000 solid">
-     <div class="container">
-     <h1>WeQueue</h1>
-     <h5>We queue for you, so you don't have to...</h5>
-     </div>
-     </div>
-    <div id="optionsList" style="margin-top:-20%">
-    <div class="container">
-    <div class="jumbotron" style="border:2px #000 solid;padding-top:15px;padding-bottom:15px">1. Enter your phone number. <br/>2. Select the service you want to use.</div>
-      <input type="email" class="form-control" id="phoneNumberId" placeholder="Phone Number"><br/>
-        <button class="btn btn-lg btn-primary btn-block" onclick="submit('normal')">Personal Banking</button>
-        <button class="btn btn-lg btn-primary btn-block" onclick="submit('goldenCard')">Golden Card Customers</button>
-        <button class="btn btn-lg btn-primary btn-block" onclick="submit('goldenSunflower')">Golden Sunflower Customers</button>
-        <button class="btn btn-lg btn-primary btn-block" onclick="submit('cash')">Cash Transactions</button>
-
-    </div>
-    </div>
-
-    <div class="container" id="waitTimeContainer">
-    <div class="jumbotron" style="background-color:#fff">
-      <p> Thank you for registering at <span id="companyName"></span> </p>
-      <p> Estimated wait time is <span id="waitTime"></span> mins </p>
-       <div class="jumbotron" style="border-bottom: 3px #000 solid;border-top: 3px #000 solid">
-        <div class="container row">
-<h3 class="col-xs-10">
-  <div style="vertical-align:middle;">
-  Your current position:
-  </div>
-</h3>
-<div class="col-xs-2">
-<h5>11</h5>
-<h4>12</h4>
-<h1>13</h1>
-<h4>14</h4>
-<h5>15</h5>
-</div>
-
-</div>
+    <div class="jumbotron" style="padding-bottom:60px;background-color:#f2bb15;border-bottom:2px #000 solid">
+      <div class="container">
+        <h1>WeQueue</h1>
+        <h5>We queue for you, so you don't have to...</h5>
       </div>
     </div>
+
+    <div id="dynamicServiceList" style="margin-top:-20%">
+      <div class="container">
+        <div class="jumbotron" style="border:2px #000 solid;padding-top:15px;padding-bottom:15px">1. Enter your phone number. <br/>2. Select the service you want to use.</div>
+          <input type="email" class="form-control" id="phoneNumberId" placeholder="Phone Number"><br/>
+          <div id="dynamicServiceList">
+          </div>
+      </div>
     </div>
 
-      <script type="text/javascript" src="./scripts.js">
+    <div id="waitTimeContainer" class="container">
+      <div class="jumbotron" style="background-color:#fff">
+        <p> Thank you for registering at <span id="companyName"></span> </p>
+        <p> Estimated wait time is <span id="waitTime"></span> mins </p>
+        <div class="jumbotron" style="border-bottom: 3px #000 solid;border-top: 3px #000 solid">
+          <div class="container row">
+            <h3 class="col-xs-10">
+              <div style="vertical-align:middle;">
+              Your current position:
+              </div>
+            </h3>
+            <div id="queuePosList" class="col-xs-2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="./scripts.js">
 
     </script>
   </body>
