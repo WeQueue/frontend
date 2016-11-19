@@ -21,6 +21,7 @@ function submit(service) {
 
       $("#companyName").text(result.company);
       $("#queueNumber").text(result.queuePosition);
+      $("#customerNumber").text(1091);
       $("#service").text(result.service);
       $("#waitTime").text(result.waitTime);
 
@@ -67,13 +68,11 @@ function displayQueuePosList(queuePos, queueLength) {
 // If you do not supply a user name then just pop (handled by api)
 function deleteUser(serviceName) {
   $.post("https://wequeue-timqian1.c9users.io/deleteUser",{"company": companyName,"service":serviceName}, function(result) {
-    console.log(result);
     displayServices(companyName,"deleteUser");
   });
 }
 
 function updateDisplayQueue(phone, company, service) {
-  console.log(phone);
   $.post("https://wequeue-timqian1.c9users.io/getPosition", {"phone":phone,"company":company,"service":service}, function(result) {
       if (result.queuePosition <= 0) {
         $("#waitTime").text(0);
