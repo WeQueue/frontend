@@ -13,8 +13,9 @@ function getParameterByName(name, url) {
 }
 
 function submit(service) {
+  phoneNumber = $('#phoneNumberId').val();
   result = $.post("https://wequeue-timqian1.c9users.io/user",  
-    {"phone":$('#phoneNumberId').val(),"company":companyName,"service":service},
+    {"phone":phoneNumber,"company":companyName,"service":service},
     function(result){
       console.log("New success message");
 
@@ -23,14 +24,18 @@ function submit(service) {
       $("#service").text(result.service);
       $("#waitTime").text(result.waitTime);
 
-      displayQueuePosList(result.queuePosition, result.queuePosition);        
+      realQueuePosition = result.queuePosition + 1;
+      displayQueuePosList(realQueuePosition, realQueuePosition);        
 
       $("#dynamicServiceList").hide();
       $("#waitTimeContainer").show();
 
-      setInterval(updateDisplayQueue($('#phoneNumberId').val(), companyName, service), 1000);
+      setInterval(function () {
+        updateDisplayQueue(phoneNumber, companyName, service)
+      }, 1000);
+
     }).fail(function(result) {
-    console.log(result);
+      console.log(result);
   });  
 }
 
@@ -40,7 +45,7 @@ function displayServices(companyName, callbackName) {
   $('#dynamicServiceList').empty();
   return $.get(url, function(result){
     $.each(result, function(index, service) {
-      $('#dynamicServiceList').append('<button class="btn btn-lg btn-primary btn-block" onclick="'+callbackName+'(\'' + service.service + '\')">' + service.serviceName + ' <span class="badge pull-right">' + service.queueLength + '</span</button>')
+      $('#dynamicServiceList').append('<button class="btn btn-lg btn-primary btn-block" onclick="'+callbackName+'(\'' + service.service + '\')">' + service.serviceName + ' <span class="badge pull-right">' + service.queueLength + '</span</button>')  
     });
   });
 
@@ -61,16 +66,19 @@ function displayQueuePosList(queuePos, queueLength) {
 // Admin functions
 // If you do not supply a user name then just pop (handled by api)
 function deleteUser(serviceName) {
-  $.post("https://wequeue-timqian1.c9users.io/deleteUser",{"company": companyName,"service":serviceName}, function() {
-    console.log("Deleted")
-    displayServices(companyName,"submit");
+  $.post("https://wequeue-timqian1.c9users.io/deleteUser",{"company": companyName,"service":serviceName}, function(result) {
+    console.log(result);
+    displayServices(companyName,"deleteUser");
   });
 }
 
 function updateDisplayQueue(phone, company, service) {
+  console.log(phone);
   $.post("https://wequeue-timqian1.c9users.io/getPosition", {"phone":phone,"company":company,"service":service}, function(result) {
-      displayQueuePosList(result.queuePosition, result.queueLength);
+      displayQueuePosList(result.queuePosition+1, result.queueLength);
+      $("#waitTime").text(result.waitTime);
   })
+
 }
 
 //logic starts
