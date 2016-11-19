@@ -27,7 +27,7 @@ function submit(service) {
       realQueuePosition = result.queuePosition + 1;
       displayQueuePosList(realQueuePosition, realQueuePosition);        
 
-      $("#dynamicServiceList").hide();
+      $("#serviceListContainer").hide();
       $("#waitTimeContainer").show();
 
       setInterval(function () {
@@ -75,8 +75,15 @@ function deleteUser(serviceName) {
 function updateDisplayQueue(phone, company, service) {
   console.log(phone);
   $.post("https://wequeue-timqian1.c9users.io/getPosition", {"phone":phone,"company":company,"service":service}, function(result) {
-      displayQueuePosList(result.queuePosition+1, result.queueLength);
-      $("#waitTime").text(result.waitTime);
+      if (result.queuePosition <= 0) {
+        $("#waitTime").text(0);
+        $("#queueInfo").empty();
+        $("#queueInfo").append('<h1>You are up!</h1>')
+      } else {
+        displayQueuePosList(result.queuePosition+1, result.queueLength);
+        $("#waitTime").text(result.waitTime);
+      }
+      
   })
 
 }
