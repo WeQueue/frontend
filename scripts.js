@@ -23,7 +23,7 @@ function submit(service) {
       $("#service").text(result.service);
       $("#waitTime").text(result.waitTime);
 
-      displayQueuePosList(1, 1);        
+      displayQueuePosList(result.queuePosition, result.queuePosition);        
 
       $("#dynamicServiceList").hide();
       $("#waitTimeContainer").show();
