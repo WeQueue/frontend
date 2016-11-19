@@ -27,7 +27,9 @@ function submit(service) {
 
       $("#dynamicServiceList").hide();
       $("#waitTimeContainer").show();
-  }).fail(function(result) {
+
+      setInterval(updateDisplayQueue($('#phoneNumberId').val(), companyName, service), 1000);
+    }).fail(function(result) {
     console.log(result);
   });  
 }
@@ -46,7 +48,6 @@ function displayServices(companyName, callbackName) {
 }
 
 function displayQueuePosList(queuePos, queueLength) {
-  console.log('called');
   $('#queuePosList').empty();
 
   if (queuePos >= 3) { $('#queuePosList').append('<h5>' + parseInt(queuePos-2) + '</h5>'); }
@@ -55,6 +56,7 @@ function displayQueuePosList(queuePos, queueLength) {
   if (queueLength - queuePos >= 1) { $('#queuePosList').append('<h4>' + parseInt(queuePos+1) + '</h4>'); }
   if (queueLength - queuePos >= 2) { $('#queuePosList').append('<h5>' + parseInt(queuePos+2) + '</h5>'); }  
 }
+
 
 // Admin functions
 // If you do not supply a user name then just pop (handled by api)
@@ -65,6 +67,11 @@ function deleteUser(serviceName) {
   });
 }
 
+function updateDisplayQueue(phone, company, service) {
+  $.post("https://wequeue-timqian1.c9users.io/getPosition", {"phone":phone,"company":company,"service":service}, function(result) {
+      displayQueuePosList(result.queuePosition, result.queueLength);
+  })
+}
 
 //logic starts
 
