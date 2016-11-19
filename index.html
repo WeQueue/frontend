@@ -56,9 +56,14 @@
 
       <script type="text/javascript">
       function submit(serviceId) {
-        result = $.post("http://APIURL",{"data":"hello"},success());
-        console.log(result);
-        console.log(serviceId);
+        result = $.post("http://10.4.20.99:3000/user",'{"data":"hello"}',function(result){
+          console.log("New success message");
+        });
+        //window.location.href="http://google.com";
+        //console.log(result);
+      }
+      function success(a, b, c) {
+        console.log("Successfully posted");
       }
     </script>
   </body>
