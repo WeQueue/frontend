@@ -32,14 +32,15 @@ function submit(service) {
   });  
 }
 
-function displayServices(companyName) {
+function displayServices(companyName, callbackName) {
   var url = "https://wequeue-timqian1.c9users.io/services/" + companyName;
   var res;
+  $('#dynamicServiceList').empty();
   return $.get(url, function(result){
     $.each(result, function(index, service) {
-      $('#dynamicServiceList .container').append('<button class="btn btn-lg btn-primary btn-block" onclick="submit(\'' + service.service + '\')">' + service.serviceName + ' <span class="badge pull-right">' + service.queueLength + '</span</button>')
+      $('#dynamicServiceList').append('<button class="btn btn-lg btn-primary btn-block" onclick="'+callbackName+'(\'' + service.service + '\')">' + service.serviceName + ' <span class="badge pull-right">' + service.queueLength + '</span</button>')
     });
-  }).then();
+  });
 
   return res;
 }
@@ -55,11 +56,17 @@ function displayQueuePosList(queuePos, queueLength) {
   if (queueLength - queuePos >= 2) { $('#queuePosList').append('<h5>' + parseInt(queuePos+2) + '</h5>'); }  
 }
 
-
+// Admin functions
+// If you do not supply a user name then just pop (handled by api)
+function deleteUser(serviceName) {
+  $.post("https://wequeue-timqian1.c9users.io/deleteUser",{"company": companyName,"service":serviceName}, function() {
+    console.log("Deleted")
+    displayServices(companyName,"submit");
+  });
+}
 
 
 //logic starts
 
 companyName = getParameterByName('company');
-$("#waitTimeContainer").hide();
-displayServices(companyName);
+
