@@ -8,7 +8,6 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
     <title>WeQueue</title>
 
@@ -19,8 +18,12 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
@@ -28,9 +31,11 @@
 
   <body>
 
+
+
     <div class="container">
 
-      <form class="form-signin" action="http://www.google.com/" method="GET">
+      <form class="form-signin" method="GET">
       <!--
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
@@ -43,12 +48,20 @@
           </label>
         </div>
         -->
-        <button class="btn btn-lg btn-primary btn-block" name="SER1" value="1" type="submit">Create a bank account</button>
+        <button class="btn btn-lg btn-primary btn-block" onclick="submit(1)">Create a bank account</button>
         <button class="btn btn-lg btn-primary btn-block" name="SER2" value="1" type="submit">International Transfer</button>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Service 1</button>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Service 2</button>
       </form>
 
     </div> <!-- /container -->
+
+        <script type="text/javascript">
+      function submit(serviceId) {
+        //result = $.get("http://www.baidu.com");
+        //console.log(result);
+        console.log(serviceId);
+      }
+    </script>
   </body>
 </html>
