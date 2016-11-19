@@ -35,7 +35,6 @@
 
     <div class="container">
 
-      <form class="form-signin" method="GET">
       <!--
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
@@ -52,14 +51,13 @@
         <button class="btn btn-lg btn-primary btn-block" name="SER2" value="1" type="submit">International Transfer</button>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Service 1</button>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Service 2</button>
-      </form>
 
     </div> <!-- /container -->
 
-        <script type="text/javascript">
+      <script type="text/javascript">
       function submit(serviceId) {
-        //result = $.get("http://www.baidu.com");
-        //console.log(result);
+        result = $.post("http://APIURL",{"data":"hello"},success());
+        console.log(result);
         console.log(serviceId);
       }
     </script>
