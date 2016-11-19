@@ -32,39 +32,50 @@
   <body>
 
 
-
+    <div id="optionsList">
     <div class="container">
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email Address"><br/>
+        <button class="btn btn-lg btn-primary btn-block" onclick="submit('create')">Create a bank account</button>
+        <button class="btn btn-lg btn-primary btn-block" onclick="submit('transfer')">International Transfer</button>
+        <button class="btn btn-lg btn-primary btn-block" onclick="submit('open')">Open Account</button>
+        <button class="btn btn-lg btn-primary btn-block" onclick="submit('close')">Close Account</button>
 
-      <!--
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        -->
-        <button class="btn btn-lg btn-primary btn-block" onclick="submit(1)">Create a bank account</button>
-        <button class="btn btn-lg btn-primary btn-block" name="SER2" value="1" type="submit">International Transfer</button>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Service 1</button>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Service 2</button>
+    </div>
+    </div>
 
-    </div> <!-- /container -->
+    <div class="container" id="waitTime">
+    <div class="jumbotron" style="background-color:#fff">
+      <p> Thank you for registering at <span id="companyName">teststujff</span> </p>
+      <p> You are #<span id="queueNumber"></span> for <span id="service"></span></p>
+      <p> Estimated wait time: <span id="waitTime"></span> mins </p>
+    </div>
+    </div>
 
       <script type="text/javascript">
-      function submit(serviceId) {
-        result = $.post("http://10.4.20.99:3000/user",'{"phone":"123","company":"icbc","service":"personal"}',function(result){
-          console.log("New success message");
+
+      $("#waitTime").hide();
+
+      function submit(service) {
+        result = $.post("http://10.4.20.99:3000/user",
+          '{"phone":' + $('#exampleInputEmail1').val() + ',"company":"icbc","service":"' + service + '"}',
+          function(result){
+            console.log("New success message");
+
+            console.log($("#companyName").val());
+
+            $("#companyName").val("ICBC");
+            $("#queueNumber").val("13");
+            $("#service").val("Create Account");
+            $("#waitTime").val("3000");
+
+
+
+            $("#optionsList").hide();
+            $("#waitTime").show();
         });
-        //window.location.href="http://google.com";
-        //console.log(result);
+        
       }
-      function success(a, b, c) {
-        console.log("Successfully posted");
-      }
+
     </script>
   </body>
 </html>
