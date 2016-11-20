@@ -21,7 +21,7 @@ function submit(service) {
 
       $("#companyName").text(result.company);
       $("#queueNumber").text(result.queuePosition);
-      $("#customerNumber").text(1091);
+      $("#ticketNumber").text(result.ticketNumber);
       $("#service").text(result.service);
       $("#waitTime").text(result.waitTime);
 
@@ -42,15 +42,14 @@ function submit(service) {
 
 function displayServices(companyName, callbackName) {
   var url = "https://wequeue-timqian1.c9users.io/services/" + companyName;
-  var res;
-  $('#dynamicServiceList').empty();
+
   return $.get(url, function(result){
+    $('#dynamicServiceList').empty();
     $.each(result, function(index, service) {
       $('#dynamicServiceList').append('<button class="btn btn-lg btn-primary btn-block" onclick="'+callbackName+'(\'' + service.service + '\')">' + service.serviceName + ' <span class="badge pull-right">' + service.queueLength + '</span</button>')  
     });
   });
 
-  return res;
 }
 
 function displayQueuePosList(queuePos, queueLength) {

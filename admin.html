@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>WeQueue</title>
+    <title>Q4U</title>
 
     <!-- Bootstrap core CSS -->
     <!-- Latest compiled and minified CSS -->
@@ -21,7 +21,7 @@
 <body style="background-color:#eee">
     <div class="jumbotron" style="padding-bottom:30px;background-color:#f2bb15;border-bottom:2px #000 solid">
       <div class="container">
-        <h1>WeQueue</h1>
+        <h1>Q4U</h1>
         <h5>We handle your queue, so you don't have to...</h5>
       </div>
     </div>
@@ -37,7 +37,9 @@
 <script type="text/javascript" src="./scripts.js">
 </script>
 <script>
-	displayServices(companyName,"deleteUser");
+	
+    setInterval(function() {displayServices(companyName,"deleteUser")}, 1000);
+
 </script>
 </body>
 </html>
