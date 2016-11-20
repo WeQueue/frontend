@@ -33,7 +33,7 @@ function submit(service) {
 
       setInterval(function () {
         updateDisplayQueue(phoneNumber, companyName, service)
-      }, 1000);
+      }, 15000);
 
     }).fail(function(result) {
       console.log(result);
