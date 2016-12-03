@@ -1,0 +1,10 @@
+version: '2'
+services:
+  webapi:
+    build: ../WeQueueBackend
+    ports:
+     - "9999:80"
+  frontend:
+    build: .
+    ports:
+     - "80:80"

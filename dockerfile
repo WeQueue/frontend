@@ -1,3 +1,3 @@
-FROM httpd:2.4
+FROM nginx:alpine
 
-COPY ./frontend/ /usr/local/apache2/htdocs/
+COPY ./frontend /usr/share/nginx/html
