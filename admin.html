@@ -1,0 +1,46 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Q4U</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body style="background-color:#eee">
+    <div class="jumbotron" style="padding-bottom:30px;background-color:#f2bb15;border-bottom:2px #000 solid">
+      <div class="container">
+        <h1>Q4U</h1>
+        <h5>We queue for you, so you don't have to...</h5>
+        <h5><a href="http://unbouncepages.com/q4u/">http://unbouncepages.com/q4u/</a></h5>
+      </div>
+    </div>
+    <div class="container" style="margin-top:-5%;">
+    <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <p>When someone is finished, select the service they are done with. We'll handle the rest...</p>
+    </div></div>
+<div class="container">
+<div id="dynamicServiceList">
+</div>
+</div>
+<script type="text/javascript" src="./scripts.js">
+</script>
+<script>
+	displayServices(companyName,"deleteUser");
+    setInterval(function() {displayServices(companyName,"deleteUser")}, 15000);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Q4U</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="jumbotron" style="padding-bottom:60px;background-color:#f2bb15;border-bottom:2px #000 solid">
+      <div class="container">
+        <h1>Q4U</h1>
+        <h5>We queue for you, so you don't have to...</h5>
+        <h5><a href="http://unbouncepages.com/q4u/">http://unbouncepages.com/q4u/</a></h5>
+      </div>
+    </div>
+
+    <div id="serviceListContainer" style="margin-top:-20%">
+      <div class="container">
+        <div class="jumbotron" style="border:2px #000 solid;padding-top:15px;padding-bottom:15px">1. Enter your phone number. <br/>2. Select the service you want to use.</div>
+          <input type="tel" class="form-control" id="phoneNumberId" placeholder="Phone Number"><br/>
+          <div id="dynamicServiceList">
+          </div>
+      </div>
+    </div>
+
+    <div id="waitTimeContainer" class="container">
+      <div class="jumbotron" style="background-color:#fff">
+        <p> Thank you for registering at <span id="companyName"></span></p>
+        <p> Your number is: <span id="ticketNumber" class="h1">1234</span></p>
+        <p> Estimated wait time is <span id="waitTime"></span> mins </p>
+        <div class="jumbotron" style="border-bottom: 3px #000 solid;border-top: 3px #000 solid">
+          <div id="queueInfo" class="container row">
+            <h3 class="col-xs-10">
+              <div style="vertical-align:middle;">
+              Your current position:
+              </div>
+            </h3>
+            <div id="queuePosList" class="col-xs-2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="./scripts.js">
+    </script>
+    <script type="text/javascript">
+      $("#waitTimeContainer").hide();
+      displayServices(companyName, "submit");
+      setInterval(function() {displayServices(companyName, "submit")}, 15000);
+    </script>
+  </body>
+</html>
